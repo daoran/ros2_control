@@ -2,6 +2,274 @@
 Changelog for package ros2controlcli
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.25.0 (2025-01-29)
+-------------------
+
+4.24.0 (2025-01-13)
+-------------------
+
+4.23.0 (2024-12-29)
+-------------------
+
+4.22.0 (2024-12-20)
+-------------------
+
+4.21.0 (2024-12-06)
+-------------------
+* [Spawner] Accept parsing multiple `--param-file` arguments to spawner  (`#1805 <https://github.com/ros-controls/ros2_control/issues/1805>`_)
+* Contributors: Sai Kishor Kothakota
+
+4.20.0 (2024-11-08)
+-------------------
+
+4.19.0 (2024-10-26)
+-------------------
+* [ros2controlcli] Fix the missing exported state interface printing (`#1800 <https://github.com/ros-controls/ros2_control/issues/1800>`_)
+* Contributors: Sai Kishor Kothakota
+
+4.18.0 (2024-10-07)
+-------------------
+* [ros2controlcli] add params file parsing to load_controller verb and add namespacing support  (`#1703 <https://github.com/ros-controls/ros2_control/issues/1703>`_)
+* Contributors: Sai Kishor Kothakota
+
+4.17.0 (2024-09-11)
+-------------------
+* [ros2controlcli] fix list_controllers when no controllers are loaded (`#1721 <https://github.com/ros-controls/ros2_control/issues/1721>`_)
+* Contributors: Sai Kishor Kothakota
+
+4.16.1 (2024-08-24)
+-------------------
+
+4.16.0 (2024-08-22)
+-------------------
+* Refactor spawner to be able to reuse code for ros2controlcli (`#1661 <https://github.com/ros-controls/ros2_control/issues/1661>`_)
+* Make list controller and list hardware components immediately visualize the state. (`#1606 <https://github.com/ros-controls/ros2_control/issues/1606>`_)
+* Contributors: Dr. Denis, Sai Kishor Kothakota
+
+4.15.0 (2024-08-05)
+-------------------
+
+4.14.0 (2024-07-23)
+-------------------
+
+4.13.0 (2024-07-08)
+-------------------
+* Remove ament linters (`#1601 <https://github.com/ros-controls/ros2_control/issues/1601>`_)
+* Contributors: Bence Magyar
+
+4.12.0 (2024-07-01)
+-------------------
+
+4.11.0 (2024-05-14)
+-------------------
+
+4.10.0 (2024-05-08)
+-------------------
+
+4.9.0 (2024-04-30)
+------------------
+* [CI] Specify runner/container images and codecov for joint_limits  (`#1504 <https://github.com/ros-controls/ros2_control/issues/1504>`_)
+* [CLI] Add `set_hardware_component_state` verb (`#1248 <https://github.com/ros-controls/ros2_control/issues/1248>`_)
+* Contributors: Christoph Fröhlich
+
+4.8.0 (2024-03-27)
+------------------
+
+4.7.0 (2024-03-22)
+------------------
+
+4.6.0 (2024-03-02)
+------------------
+* Added spawner colours to `list_controllers` depending upon active or inactive (`#1409 <https://github.com/ros-controls/ros2_control/issues/1409>`_)
+* Contributors: Soham Patil
+
+4.5.0 (2024-02-12)
+------------------
+
+4.4.0 (2024-01-31)
+------------------
+
+4.3.0 (2024-01-20)
+------------------
+* [docs] Remove joint_state_controller (`#1263 <https://github.com/ros-controls/ros2_control/issues/1263>`_)
+* Contributors: Christoph Fröhlich
+
+4.2.0 (2023-12-12)
+------------------
+
+4.1.0 (2023-11-30)
+------------------
+
+4.0.0 (2023-11-21)
+------------------
+
+3.21.0 (2023-11-06)
+-------------------
+
+3.20.0 (2023-10-31)
+-------------------
+* Fix doc of load_controller (`#1132 <https://github.com/ros-controls/ros2_control/issues/1132>`_)
+* Contributors: Christoph Fröhlich
+
+3.19.1 (2023-10-04)
+-------------------
+
+3.19.0 (2023-10-03)
+-------------------
+
+3.18.0 (2023-08-17)
+-------------------
+
+3.17.0 (2023-08-07)
+-------------------
+* Add info where the pdf is saved to view_controller_chains (`#1094 <https://github.com/ros-controls/ros2_control/issues/1094>`_)
+* Contributors: Christoph Fröhlich
+
+3.16.0 (2023-07-09)
+-------------------
+
+3.15.0 (2023-06-23)
+-------------------
+* Improve list hardware components output and code for better readability. (`#1060 <https://github.com/ros-controls/ros2_control/issues/1060>`_)
+* Contributors: Dr. Denis
+
+3.14.0 (2023-06-14)
+-------------------
+* Docs: Use branch name substitution for all links (`#1031 <https://github.com/ros-controls/ros2_control/issues/1031>`_)
+* Contributors: Christoph Fröhlich
+
+3.13.0 (2023-05-18)
+-------------------
+* Fix github links on control.ros.org (`#1019 <https://github.com/ros-controls/ros2_control/issues/1019>`_)
+* Contributors: Christoph Fröhlich
+
+3.12.2 (2023-04-29)
+-------------------
+* Fix verbose output of list_hardware_components (`#1004 <https://github.com/ros-controls/ros2_control/issues/1004>`_)
+* Contributors: Christoph Fröhlich
+
+3.12.1 (2023-04-14)
+-------------------
+
+3.12.0 (2023-04-02)
+-------------------
+
+3.11.0 (2023-03-22)
+-------------------
+
+3.10.0 (2023-03-16)
+-------------------
+
+3.9.1 (2023-03-09)
+------------------
+
+3.9.0 (2023-02-28)
+------------------
+* Remove deprecations from CLI and controller_manager (`#948 <https://github.com/ros-controls/ros2_control/issues/948>`_)
+* [CLI] Fix wrong output of controller states for `load_controller` command (`#947 <https://github.com/ros-controls/ros2_control/issues/947>`_)
+* Contributors: Christoph Fröhlich
+
+3.8.0 (2023-02-10)
+------------------
+* 🖤 Add Black formatter for Python files. (`#936 <https://github.com/ros-controls/ros2_control/issues/936>`_)
+* Add list_hardware_components CLI  <https://github.com/ros-controls/ros2_control/issues/796>`_ - Adds list_hardware_components to CLI (`#891 <https://github.com/ros-controls/ros2_control/issues/891>`_)
+* Contributors: Andy McEvoy, Dr. Denis
+
+3.7.0 (2023-01-24)
+------------------
+* Do not use CLI calls but direct API for setting parameters. (`#910 <https://github.com/ros-controls/ros2_control/issues/910>`_)
+* Contributors: Dr. Denis
+
+3.6.0 (2023-01-12)
+------------------
+
+3.5.1 (2023-01-06)
+------------------
+
+3.5.0 (2022-12-06)
+------------------
+* Fix hardware interface CLI description (`#864 <https://github.com/ros-controls/ros2_control/issues/864>`_)
+* Contributors: Christoph Fröhlich
+
+3.4.0 (2022-11-27)
+------------------
+
+3.3.0 (2022-11-15)
+------------------
+
+3.2.0 (2022-10-15)
+------------------
+
+3.1.0 (2022-10-05)
+------------------
+
+3.0.0 (2022-09-19)
+------------------
+
+2.15.0 (2022-09-19)
+-------------------
+* migrate from graphviz python to pygraphviz (`#812 <https://github.com/ros-controls/ros2_control/issues/812>`_)
+* Contributors: Sachin Kumar
+
+2.14.0 (2022-09-04)
+-------------------
+* Visualize chained controllers with graphviz (`#763 <https://github.com/ros-controls/ros2_control/issues/763>`_)
+* Corrected the site link to a valid one. (`#801 <https://github.com/ros-controls/ros2_control/issues/801>`_)
+* Contributors: Interactics, Paul Gesel
+
+2.13.0 (2022-08-03)
+-------------------
+* Add chained controllers information in list controllers service #abi-braking (`#758 <https://github.com/ros-controls/ros2_control/issues/758>`_)
+  * add chained controllers in ros2controlcli
+  * remove controller_group from service
+  * added comments to ControllerState message
+  * added comments to ChainedConnection message
+* Added spawner colors to command interfaces based on availablity and claimed status (`#754 <https://github.com/ros-controls/ros2_control/issues/754>`_)
+* Contributors: Leander Stephen D'Souza, Paul Gesel
+
+2.12.1 (2022-07-14)
+-------------------
+
+2.12.0 (2022-07-09)
+-------------------
+* Deprecate and rename `start` and `stop` nomenclature toward user to `activate` and `deactivate` #ABI-breaking (`#755 <https://github.com/ros-controls/ros2_control/issues/755>`_)
+  * Rename fields and deprecate old nomenclature.
+  * Add new defines to SwitchController.srv
+  * Deprecated start/stop nomenclature in all CLI commands.
+  * Deprecate 'start_asap' too as other fields.
+* Contributors: Denis Štogl
+
+2.11.0 (2022-07-03)
+-------------------
+* Remove hybrid services in controller manager. They are just overhead. (`#761 <https://github.com/ros-controls/ros2_control/issues/761>`_)
+* Update maintainers of packages (`#753 <https://github.com/ros-controls/ros2_control/issues/753>`_)
+* Add available status and moved to fstrings when listing hardware interfaces (`#739 <https://github.com/ros-controls/ros2_control/issues/739>`_)
+* Contributors: Bence Magyar, Denis Štogl, Leander Stephen D'Souza
+
+2.10.0 (2022-06-18)
+-------------------
+
+2.9.0 (2022-05-19)
+------------------
+
+2.8.0 (2022-05-13)
+------------------
+
+2.7.0 (2022-04-29)
+------------------
+
+2.6.0 (2022-04-20)
+------------------
+
+2.5.0 (2022-03-25)
+------------------
+
+2.4.0 (2022-02-23)
+------------------
+
+2.3.0 (2022-02-18)
+------------------
+
 2.2.0 (2022-01-24)
 ------------------
 

@@ -12,12 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "./test_controller_failed_init.hpp"
-
-#include <memory>
-#include <string>
-
-#include "lifecycle_msgs/msg/transition.hpp"
+#include "test_controller_failed_init.hpp"
 
 namespace test_controller_failed_init
 {
@@ -29,12 +24,6 @@ rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
 TestControllerFailedInit::on_init()
 {
   return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::FAILURE;
-}
-
-controller_interface::return_type TestControllerFailedInit::init(
-  const std::string & /* controller_name */)
-{
-  return controller_interface::return_type::ERROR;
 }
 
 controller_interface::return_type TestControllerFailedInit::update(

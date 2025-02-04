@@ -17,6 +17,7 @@
 
 #include <algorithm>
 #include <set>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -46,7 +47,7 @@ std::vector<std::string> get_names(const std::vector<T> & handles)
   std::set<std::string> names;
   std::transform(
     handles.cbegin(), handles.cend(), std::inserter(names, names.end()),
-    [](const auto & handle) { return handle.get_name(); });
+    [](const auto & handle) { return handle.get_prefix_name(); });
   return std::vector<std::string>(names.begin(), names.end());
 }
 
@@ -60,9 +61,10 @@ std::vector<T> get_ordered_handles(
   {
     std::copy_if(
       unordered_handles.cbegin(), unordered_handles.cend(), std::back_inserter(result),
-      [&](const auto & handle) {
-        return (handle.get_name() == name) && (handle.get_interface_name() == interface_type) &&
-               handle;
+      [&](const auto & handle)
+      {
+        return (handle.get_prefix_name() == name) &&
+               (handle.get_interface_name() == interface_type) && handle;
       });
   }
   return result;

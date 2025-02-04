@@ -28,9 +28,9 @@ namespace transmission_interface
 {
 /// Implementation of a simple reducer transmission.
 /**
- * This transmission relates <b>one actuator</b> and <b>one joint</b> through a reductor (or amplifier).
- * Timing belts and gears are examples of this transmission type, and are illustrated below.
- * \image html simple_transmission.png
+ * This transmission relates <b>one actuator</b> and <b>one joint</b> through a reductor (or
+ * amplifier). Timing belts and gears are examples of this transmission type, and are illustrated
+ * below. \image html simple_transmission.png
  *
  * <CENTER>
  * <table>
@@ -63,17 +63,20 @@ namespace transmission_interface
  * </CENTER>
  *
  * where:
- * - \f$ x \f$, \f$ \dot{x} \f$ and \f$ \tau \f$ are position, velocity and effort variables, respectively.
- * - Subindices \f$ _a \f$ and \f$ _j \f$ are used to represent actuator-space and joint-space variables, respectively.
- * - \f$ x_{off}\f$ represents the offset between motor and joint zeros, expressed in joint position coordinates.
- * - \f$ n \f$ is the transmission ratio, and can be computed as the ratio between the output and input pulley
- *   radii for the timing belt; or the ratio between output and input teeth for the gear system.
- *   The transmission ratio can take any real value \e except zero. In particular:
- *     - If its absolute value is greater than one, it's a velocity reducer / effort amplifier, while if its absolute
- *       value lies in \f$ (0, 1) \f$ it's a velocity amplifier / effort reducer.
- *     - Negative values represent a direction flip, ie. actuator and joint move in opposite directions. For example,
- *       in timing belts actuator and joint move in the same direction, while in single-stage gear systems actuator and
- *       joint move in opposite directions.
+ * - \f$ x \f$, \f$ \dot{x} \f$ and \f$ \tau \f$ are position, velocity and effort variables,
+ * respectively.
+ * - Subindices \f$ _a \f$ and \f$ _j \f$ are used to represent actuator-space and joint-space
+ * variables, respectively.
+ * - \f$ x_{off}\f$ represents the offset between motor and joint zeros, expressed in joint position
+ * coordinates.
+ * - \f$ n \f$ is the transmission ratio, and can be computed as the ratio between the output and
+ * input pulley radii for the timing belt; or the ratio between output and input teeth for the gear
+ * system. The transmission ratio can take any real value \e except zero. In particular:
+ *     - If its absolute value is greater than one, it's a velocity reducer / effort amplifier,
+ * while if its absolute value lies in \f$ (0, 1) \f$ it's a velocity amplifier / effort reducer.
+ *     - Negative values represent a direction flip, ie. actuator and joint move in opposite
+ * directions. For example, in timing belts actuator and joint move in the same direction, while in
+ * single-stage gear systems actuator and joint move in opposite directions.
  *
  * \ingroup transmission_types
  */
@@ -102,14 +105,16 @@ public:
   /// Transform variables from actuator to joint space.
   /**
    *  This method operates on the handles provided when configuring the transmission.
-   *  To call this method it is not required that all supported interface types are provided, e.g. one can supply only velocity handles
+   *  To call this method it is not required that all supported interface types are provided, e.g.
+   * one can supply only velocity handles
    */
   void actuator_to_joint() override;
 
   /// Transform variables from joint to actuator space.
   /**
    *  This method operates on the handles provided when configuring the transmission.
-   *  To call this method it is not required that all supported interface types are provided, e.g. one can supply only velocity handles
+   *  To call this method it is not required that all supported interface types are provided, e.g.
+   * one can supply only velocity handles
    */
   void joint_to_actuator() override;
 
@@ -151,7 +156,7 @@ HandleType get_by_interface(
     [&interface_name](const auto handle) { return handle.get_interface_name() == interface_name; });
   if (result == handles.cend())
   {
-    return HandleType(handles.cbegin()->get_name(), interface_name, nullptr);
+    return HandleType(handles.cbegin()->get_prefix_name(), interface_name, nullptr);
   }
   return *result;
 }
@@ -162,7 +167,7 @@ bool are_names_identical(const std::vector<T> & handles)
   std::vector<std::string> names;
   std::transform(
     handles.cbegin(), handles.cend(), std::back_inserter(names),
-    [](const auto & handle) { return handle.get_name(); });
+    [](const auto & handle) { return handle.get_prefix_name(); });
   return std::equal(names.cbegin() + 1, names.cend(), names.cbegin());
 }
 

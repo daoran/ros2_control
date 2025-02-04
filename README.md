@@ -1,17 +1,37 @@
 # ros2_control
 
 [![Licence](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![codecov](https://codecov.io/gh/ros-controls/ros2_control/graph/badge.svg?token=idvm1zJXOf)](https://codecov.io/gh/ros-controls/ros2_control)
 
-|         | Foxy    | Galactic | Rolling
-|:-------:|:-------:|:-------:|:-------:|
-| Branch  | [`foxy`](https://github.com/ros-controls/ros2_control/tree/foxy) |[`master`](https://github.com/ros-controls/ros2_control/tree/master) | TBD
-| CI  | TBD| Linux: [![Build Status](https://github.com/ros-controls/ros2_control/workflows/Test%20ros2_control/badge.svg)](https://github.com/ros-controls/ros2_control/actions?query=workflow%3A"Test%20ros2_control")| TBD |
-| Linters  | TBD| [![Linters Status](https://github.com/ros-controls/ros2_control/workflows/Lint%20ros2_control/badge.svg)](https://github.com/ros-controls/ros2_control/actions?query=workflow%3A"Lint+ros2_control")| TBD |
-
-
-## About
 This package is a part of the ros2_control framework.
-For more, please check the [documentation](https://ros-controls.github.io/control.ros.org/).
+For more, please check the [documentation](https://control.ros.org/).
+
+
+## Build status
+
+ROS2 Distro | Branch | Build status | Documentation | Released packages
+:---------: | :----: | :----------: | :-----------: | :---------------:
+**Rolling** | [`master`](https://github.com/ros-controls/ros2_control/tree/master) | [![Rolling Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/rolling-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/rolling-binary-build.yml?branch=master) <br /> [![Rolling Semi-Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/rolling-semi-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/rolling-semi-binary-build.yml?branch=master) | [Documentation](https://control.ros.org/master/index.html) <br /> [API Reference](https://control.ros.org/master/doc/api/index.html) | [ros2_control](https://index.ros.org/p/ros2_control/#rolling)
+**Jazzy** | [`master`](https://github.com/ros-controls/ros2_control/tree/master) | [![Rolling Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/jazzy-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/jazzy-binary-build.yml?branch=master) <br /> [![Rolling Semi-Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/jazzy-semi-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/jazzy-semi-binary-build.yml?branch=master) | [Documentation](https://control.ros.org/jazzy/index.html) <br /> [API Reference](https://control.ros.org/jazzy/doc/api/index.html) | [ros2_control](https://index.ros.org/p/ros2_control/#jazzy)
+**Humble** | [`humble`](https://github.com/ros-controls/ros2_control/tree/humble) | [![Humble Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/humble-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/humble-binary-build.yml?branch=master) <br /> [![Humble Semi-Binary Build](https://github.com/ros-controls/ros2_control/actions/workflows/humble-semi-binary-build.yml/badge.svg?branch=master)](https://github.com/ros-controls/ros2_control/actions/workflows/humble-semi-binary-build.yml?branch=master) | [Documentation](https://control.ros.org/humble/index.html) <br /> [API Reference](https://control.ros.org/humble/doc/api/index.html) | [ros2_control](https://index.ros.org/p/ros2_control/#humble)
+
+[Detailed build status](.github/workflows/README.md)
+
+### Explanation of different build types
+
+**NOTE**: There are three build stages checking current and future compatibility of the package.
+
+1. Binary builds - against released packages (main and testing) in ROS distributions. Shows that direct local build is possible.
+
+   Uses repos file: `src/$NAME$/$NAME$-not-released.<ros-distro>.repos`
+
+1. Semi-binary builds - against released core ROS packages (main and testing), but the immediate dependencies are pulled from source.
+   Shows that local build with dependencies is possible and if fails there we can expect that after the next package sync we will not be able to build.
+
+   Uses repos file: `src/$NAME$/$NAME$.repos`
+
+1. Source build - also core ROS packages are build from source. It shows potential issues in the mid future.
+
 
 ## Docker images
 There are a few published docker images that come with the latest releases. More information about them can be found in the `.docker` folder. You can pull them under these tags: `ghcr.io/ros-controls/ros2_control_release` or `ghcr.io/ros-controls/ros2_control_source`.

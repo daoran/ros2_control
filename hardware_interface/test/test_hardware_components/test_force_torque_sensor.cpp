@@ -14,7 +14,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <memory>
 #include <vector>
 
 #include "hardware_interface/sensor_interface.hpp"
@@ -34,7 +33,7 @@ class TestForceTorqueSensor : public SensorInterface
       return CallbackReturn::ERROR;
     }
 
-    const auto & state_interfaces = info_.sensors[0].state_interfaces;
+    const auto & state_interfaces = get_hardware_info().sensors[0].state_interfaces;
     if (state_interfaces.size() != 6)
     {
       return CallbackReturn::ERROR;
@@ -43,9 +42,8 @@ class TestForceTorqueSensor : public SensorInterface
     {
       if (
         std::find_if(
-          state_interfaces.begin(), state_interfaces.end(), [&ft_key](const auto & interface_info) {
-            return interface_info.name == ft_key;
-          }) == state_interfaces.end())
+          state_interfaces.begin(), state_interfaces.end(), [&ft_key](const auto & interface_info)
+          { return interface_info.name == ft_key; }) == state_interfaces.end())
       {
         return CallbackReturn::ERROR;
       }
@@ -59,7 +57,7 @@ class TestForceTorqueSensor : public SensorInterface
   {
     std::vector<StateInterface> state_interfaces;
 
-    const auto & sensor_name = info_.sensors[0].name;
+    const auto & sensor_name = get_hardware_info().sensors[0].name;
     state_interfaces.emplace_back(
       hardware_interface::StateInterface(sensor_name, "fx", &values_.fx));
     state_interfaces.emplace_back(
@@ -76,7 +74,7 @@ class TestForceTorqueSensor : public SensorInterface
     return state_interfaces;
   }
 
-  return_type read() override
+  return_type read(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/) override
   {
     values_.fx = fmod((values_.fx + 1.0), 10);
     values_.fy = fmod((values_.fy + 1.0), 10);

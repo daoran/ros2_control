@@ -1,24 +1,29 @@
-cmake_minimum_required(VERSION 3.5)
-project(ros2_control_test_assets)
+cmake_minimum_required(VERSION 3.16)
+project(ros2_control_test_assets LANGUAGES CXX)
 
-# find dependencies
 find_package(ament_cmake REQUIRED)
+
+add_library(ros2_control_test_assets INTERFACE)
+target_compile_features(ros2_control_test_assets INTERFACE cxx_std_17)
+target_include_directories(ros2_control_test_assets INTERFACE
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include/ros2_control_test_assets>
+)
 
 install(
   DIRECTORY include/
-  DESTINATION include
+  DESTINATION include/ros2_control_test_assets
+)
+install(
+  FILES urdf/test_hardware_components.urdf
+  DESTINATION share/ros2_control_test_assets/urdf
+)
+install(TARGETS ros2_control_test_assets
+  EXPORT export_ros2_control_test_assets
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  list(APPEND AMENT_LINT_AUTO_EXCLUDE
-    ament_cmake_uncrustify
-    ament_cmake_cpplint
-  )
-  ament_lint_auto_find_test_dependencies()
-endif()
-
-ament_export_include_directories(
-  include
-)
+ament_export_targets(export_ros2_control_test_assets HAS_LIBRARY_TARGET)
 ament_package()

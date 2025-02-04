@@ -15,13 +15,10 @@
 #ifndef TEST_CONTROLLER_WITH_OPTIONS_HPP_
 #define TEST_CONTROLLER_WITH_OPTIONS_HPP_
 
-#include <controller_interface/controller_interface.hpp>
-
 #include <map>
-#include <memory>
 #include <string>
 
-#include "hardware_interface/types/lifecycle_state_names.hpp"
+#include "controller_interface/controller_interface.hpp"
 
 namespace controller_with_options
 {
@@ -37,35 +34,19 @@ public:
   ControllerWithOptions() = default;
   LifecycleNodeInterface::CallbackReturn on_init() override
   {
-    return LifecycleNodeInterface::CallbackReturn::SUCCESS;
+    if (get_node()->get_parameters("parameter_list", params))
+    {
+      RCLCPP_INFO_STREAM(get_node()->get_logger(), "I found " << params.size() << " parameters.");
+      return LifecycleNodeInterface::CallbackReturn::SUCCESS;
+    }
+    return LifecycleNodeInterface::CallbackReturn::FAILURE;
   }
 
-  controller_interface::return_type init(const std::string & controller_name) override
+  rclcpp::NodeOptions define_custom_node_options() const override
   {
-    rclcpp::NodeOptions options;
-    options.allow_undeclared_parameters(true).automatically_declare_parameters_from_overrides(true);
-    node_ = std::make_shared<rclcpp::Node>(controller_name, options);
-
-    switch (on_init())
-    {
-      case LifecycleNodeInterface::CallbackReturn::SUCCESS:
-        lifecycle_state_ = rclcpp_lifecycle::State(
-          lifecycle_msgs::msg::State::PRIMARY_STATE_UNCONFIGURED,
-          hardware_interface::lifecycle_state_names::UNCONFIGURED);
-        break;
-      case LifecycleNodeInterface::CallbackReturn::ERROR:
-      case LifecycleNodeInterface::CallbackReturn::FAILURE:
-        return controller_interface::return_type::ERROR;
-    }
-    if (node_->get_parameters("parameter_list", params))
-    {
-      RCLCPP_INFO_STREAM(node_->get_logger(), "I found " << params.size() << " parameters.");
-      return controller_interface::return_type::OK;
-    }
-    else
-    {
-      return controller_interface::return_type::ERROR;
-    }
+    return rclcpp::NodeOptions()
+      .allow_undeclared_parameters(true)
+      .automatically_declare_parameters_from_overrides(true);
   }
 
   controller_interface::InterfaceConfiguration command_interface_configuration() const override
