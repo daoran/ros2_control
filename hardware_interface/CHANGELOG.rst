@@ -2,8 +2,8 @@
 Changelog for package hardware_interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+6.7.0 (2026-04-23)
+------------------
 * Fix C++20 behavior changes of `std::from_chars` (`#3244 <https://github.com/ros-controls/ros2_control/issues/3244>`_)
 * Add missing `charconv` header (`#3234 <https://github.com/ros-controls/ros2_control/issues/3234>`_)
 * Contributors: Christoph Fröhlich
